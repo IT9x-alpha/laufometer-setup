@@ -1,0 +1,65 @@
+version: "3.7"
+services:
+  frontend:
+    build:
+      context: ./laufometer-frontend
+    environment:
+      - "HOST=0.0.0.0"
+      - "API_URL=http://backend/"
+    volumes:
+      - "./laufometer-frontend/assets:/app/assets"
+      - "./laufometer-frontend/components:/app/components"
+      - "./laufometer-frontend/layouts:/app/layouts"
+      - "./laufometer-frontend/middleware:/app/middleware"
+      - "./laufometer-frontend/pages:/app/pages"
+      - "./laufometer-frontend/plugins:/app/plugins"
+      - "./laufometer-frontend/static:/app/static"
+      - "./laufometer-frontend/store:/app/store"
+      - "./laufometer-frontend/tailwind.config.js:/app/tailwind.config.js"
+      - "./laufometer-frontend/webpack.config.js:/app/webpack.config.js"
+  backend:
+    build:
+      context: ./laufometer-backend
+    environment:
+      - "HOME=/home"
+      - "APP_DEBUG=true"
+      - "CLOCKWORK_ENABLE=true"
+      - "APP_NAME=LaufOMeter Local Dev"
+      - "APP_ENV=develop"
+      - "DB_CONNECTION=mysql"
+      - "DB_HOST=database"
+      - "DB_DATABASE=laufometer"
+      - "DB_USERNAME=laufometer"
+      - "DB_PASSWORD=laufometer"
+    volumes:
+      - '~/.psyhistory:/home/.config'
+      - '~/.ash_history:/home/.ash_history'
+      - './laufometer-backend/app:/app/app'
+      - './laufometer-backend/bootstrap:/app/bootstrap'
+      - './laufometer-backend/routes:/app/routes'
+      - './laufometer-backend/config:/app/config'
+      - './laufometer-backend/resources:/app/resources'
+      - './laufometer-backend/tests:/app/tests'
+      - './laufometer-backend/public:/app/public'
+      - './laufometer-backend/phpunit.xml:/app/phpunit.xml'
+      - './laufometer-backend/.env:/app/.env'
+  database:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=laufometer
+      - MYSQL_USER=laufometer
+      - MYSQL_PASSWORD=laufometer
+      - MYSQL_DATABASE=laufometer
+    volumes:
+      - database:/var/lib/mysql
+  caddy:
+    image: 'caddy/caddy:alpine'
+    ports:
+      - 80:80
+    volumes:
+      - './laufometer-backend/:/backend'
+      - './laufometer-setup/Caddyfile:/etc/caddy/Caddyfile'
+volumes:
+  database:
