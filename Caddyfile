@@ -1,9 +1,9 @@
-laufometer.local:80 {
+api.laufometer.local:80 {
     root * /app/public
     php_fastcgi * backend:9000
     file_server
 }
-api.laufometer.local:80 {
+laufometer.local:80 {
     reverse_proxy frontend:3000
 }
 

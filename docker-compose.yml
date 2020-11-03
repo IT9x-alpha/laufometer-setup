@@ -59,7 +59,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - './laufometer-backend/:/backend'
+      - './laufometer-backend/:/app'
       - './laufometer-setup/Caddyfile:/etc/caddy/Caddyfile'
 volumes:
   database:
