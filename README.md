@@ -20,3 +20,4 @@
     /laufometer-setup
 docker-compose.yml
 ```
+## 4. Im /laufometer mit der cmd docker-compose up -d ausführen
