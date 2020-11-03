@@ -1,6 +1,6 @@
 # Installing Laufometer
 ## 1. Einträge in Hosts Datei einfügen.
-`C:\Windows\System32\drivers\etc`
+`C:\Windows\System32\drivers\etc\hosts`
 ```
 127.0.0.1 laufometer.local
 127.0.0.1 api.laufometer.local
