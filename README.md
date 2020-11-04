@@ -26,6 +26,7 @@
 docker-compose.yml
 ```
 ## 5. Kopiere .env.example in .env (Datei erstellen)
+Die .env ist die Konfigurationsdatei.
 ## 6. Im /laufometer mit der cmd docker-compose up -d --build ausführen
 ## 7. `php artisan key:generate` ausführen im Backend Verzeichnis
 ## 8. `docker-compose up -d --build`
