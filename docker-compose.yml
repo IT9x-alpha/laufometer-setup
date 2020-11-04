@@ -42,7 +42,6 @@ services:
       - './laufometer-backend/tests:/app/tests'
       - './laufometer-backend/public:/app/public'
       - './laufometer-backend/phpunit.xml:/app/phpunit.xml'
-      - './laufometer-backend/.env:/app/.env'
   database:
     image: mysql:8.0
     ports:
