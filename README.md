@@ -1,3 +1,8 @@
+# Systemanforderungen
+## Lokale Entwicklungsumgebung
+- Docker
+- PHP & Composer (optional.)
+- Code Editor wie PhpStorm (empf.), VsCode
 # Installing Laufometer
 ## 1. Einträge in Hosts Datei einfügen.
 `C:\Windows\System32\drivers\etc\hosts`
